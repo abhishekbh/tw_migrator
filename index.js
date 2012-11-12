@@ -3,8 +3,9 @@ fs = require("fs");
 exports.migrate = function(req, res){
   var csv = require('csv');
   tags = ['hello'];
+  status = false;
 
-  function doCSV(tags) {
+  function doCSV(tags, callback) {
     console.log();
     csv()
       .from.stream(
@@ -31,6 +32,9 @@ exports.migrate = function(req, res){
 
   res.render('index', {
       title: 'The MigratOr'
-      , tags: doCSV(tags)
+      , tags: doCSV(tags, function(){
+                status = true;
+              })
+      , status: status
   });
 };

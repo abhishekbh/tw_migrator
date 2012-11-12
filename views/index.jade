@@ -1,6 +1,11 @@
 h1= title
 p now running...
 
+- if(#{status}==true) 
+    p should be working
+- else
+    p nah
+
 - each tag in tags
   p #{tag}
 
