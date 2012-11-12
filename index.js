@@ -6,7 +6,7 @@ exports.migrate = function(req, res){
 
   function doCSV(tags) {
     console.log();
-    csv(tags)
+    csv()
       .from.stream(
         fs.createReadStream('iran.csv')
         //,{columns: ['Tags']}
@@ -26,6 +26,7 @@ exports.migrate = function(req, res){
       .on('error', function(error){
         console.log(error.message);
       });
+      return tags;
   }
 
   res.render('index', {
